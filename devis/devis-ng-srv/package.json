@@ -1,0 +1,22 @@
+{
+  "name": "devis-ng-srv",
+  "version": "1.0.0",
+  "description": "devis generation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kenshiin185/devis.git"
+  },
+  "keywords": [
+    "MEAN"
+  ],
+  "author": "castadela",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kenshiin185/devis/issues"
+  },
+  "homepage": "https://github.com/kenshiin185/devis#readme"
+}
