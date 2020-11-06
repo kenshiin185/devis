@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/kenshiin185/devis/issues"
   },
-  "homepage": "https://github.com/kenshiin185/devis#readme"
+  "homepage": "https://github.com/kenshiin185/devis#readme",
+  "devDependencies": {
+    "eslint": "^7.12.1"
+  }
 }
