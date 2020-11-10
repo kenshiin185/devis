@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Article } from '../models/article';
+import { ArticleService } from '../services/article.service';
 
 @Component({
   selector: 'app-espace-utilisateur',
@@ -6,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./espace-utilisateur.component.css']
 })
 export class EspaceUtilisateurComponent implements OnInit {
-
-  constructor() { }
+articleList$ :Observable<Article[]>;
+  constructor(
+    private articleService:ArticleService
+  ) { }
 
   ngOnInit() {
+    this.articleList$ = this.articleService.getArticle();
   }
 
 }

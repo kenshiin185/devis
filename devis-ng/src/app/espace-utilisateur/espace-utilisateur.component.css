@@ -1,0 +1,45 @@
+h2 {
+    text-align: center;
+}
+.containListArticle {
+    margin: auto;
+    margin-top: 3%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+   
+}
+.listArticle {
+   
+    margin-top: 1%;
+    border-bottom: 1px solid #777;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: auto;
+    justify-content: space-between;
+}
+i:hover {
+    cursor: pointer;
+}
+.fas {
+    height: 35px;
+    width: 35px;
+    font-size: 2em;
+    margin-left: 15px;
+}
+.containAction {
+    display: flex;
+    flex-direction: row;
+    min-width: 100px;
+   
+}
+.btn {
+    width: 150px;
+}
+.fas.fa-plus {
+    height: 15px;
+    width: 35px;
+    font-size: 2em;
+
+}

@@ -8,6 +8,8 @@ import { AcceuilComponent } from './acceuil/acceuil.component';
 import { EspaceUtilisateurComponent } from './espace-utilisateur/espace-utilisateur.component';
 import { CreationDevisComponent } from './creation-devis/creation-devis.component';
 import { HeaderComponent } from './header/header.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,10 @@ import { HeaderComponent } from './header/header.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

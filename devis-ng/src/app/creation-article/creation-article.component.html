@@ -1,15 +1,15 @@
 <app-header></app-header>
 <div class="containFromArticle">
     <h1>Ajouter un article</h1>
-<form>
+    <form [formGroup]="addArticleForm" #formDirective="ngForm" (submit)="addArticle()(formDirective)">
   <div class="form-group">
     <label for="exampleInputEmail1">Référence de l'article</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="refArticle">
     
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Type d'article *</label>
-   <select name="refArticle" id="refArticle" >
+   <select name="refArticle" id="refArticle" formControlName="typeArticle" >
        <option value="produit">Produit</option>
        <option value="main d'oeuvre">Main d'oeuvre</option>
        <option value="service">Service</option>
@@ -18,15 +18,15 @@
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Libellé *</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" required>
+    <input type="text" class="form-control" id="exampleInputPassword1" formControlName="libelle" required>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Prix *</label>
-    <input type="number" class="form-control" id="exampleInputPassword1" required>
+    <input type="number" class="form-control" id="exampleInputPassword1" formControlName="prix" required>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Coeficient</label>
-    <input type="number" class="form-control" id="exampleInputPassword1">
+    <input type="number" class="form-control" id="exampleInputPassword1" formControlName="coeficient">
   </div>
   
  
