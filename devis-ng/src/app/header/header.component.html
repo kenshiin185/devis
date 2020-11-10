@@ -7,21 +7,31 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/acceuil']">
-                        Accueil
-                    </a>
-                </li>
+                
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Utilisateur
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" [routerLink]="['/espace-utilisateur']">Votre espace personnel</a>
+                      <a class="dropdown-item" [routerLink]="['/espace-utilisateur']">Editer/modifier votre en-tête</a>
+                      <a class="dropdown-item" [routerLink]="['/espace-utilisateur']">Mon abonnement</a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item text-danger" href="#">Déconnexion</a>
                     </div>
                   </li>
+
+                  <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Clients
+                    </a>
+                    <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" [routerLink]="['/espace-utilisateur']">Tous vos clients</a>
+                      <a class="dropdown-item" [routerLink]="['/espace-utilisateur']">Ajouter un client</a>
+                      
+                    </div>
+                  </li>
+
             </ul>
         </div>
     </div>

@@ -65,6 +65,47 @@ router.get('/utilisateur/:id', (req, res) => {
         }));
 });
 
+/*************************CLIENT****************************************** */
+router.get('/client', (req,res) => {
+    Client.find()
+    .sort({ 'createdOn': -1})
+    .exec().then(client => res.status(200).json(client))
+    .catch(err => res.status(500).json({
+        message: 'client introuvable (:(>',
+        error:err
+    }));
+});
+
+router.get('/client/:id', (req, res) => {
+    const id = req.params.id;
+    Client.findById(id)
+        .then(client => res.status(200).json(client))
+        .catch(err => res.status(500).json({
+            message: `client avec l'Id ${id} introuvable (:(>`,
+            error: err
+        }));
+});
+
+/**************************ENTETE**************************************** */
+router.get('/entete', (req,res) => {
+    Entete.find()
+    .sort({ 'createdOn': -1})
+    .exec().then(entete => res.status(200).json(entete))
+    .catch(err => res.status(500).json({
+        message: 'entete introuvable (:(>',
+        error:err
+    }));
+});
+
+router.get('/entete/:id', (req, res) => {
+    const id = req.params.id;
+    Entete.findById(id)
+        .then(entete => res.status(200).json(entete))
+        .catch(err => res.status(500).json({
+            message: `client avec l'Id ${id} introuvable (:(>`,
+            error: err
+        }));
+});
 
 /************************************************************************ */
 /**************ROUTES POST *********************************************** /
@@ -112,5 +153,122 @@ router.post('/entete', (req, res) => { // créer une entête
         res.status(201).json(entete);
     });
 });
+
+  /************************************************************************* */
+ /**********************ROUTES PUT **************************************** */
+/************************************************************************* */
+
+/********************ARTICLE******************************************** */
+router.put('/article/:id', (req,res) => {
+    const id = req.params.id;
+    const conditions = {_id: id };
+    const article = { ...req.body };
+    const update = { $set: article };
+    const options = {
+        upsert: true,
+        new: true
+    };
+    Article.findOneAndUpdate(conditions, update, options, (err, response) => {
+        if(err){return res.status(500).json({ message: 'échec de la mise à jour', error:err });} 
+        res.status(200).json({ message: `l'article avec l'id ${id} a bien été mis à jour :)`});
+    });
+});
+
+/********************CLIENT******************************************** */
+router.put('/client/:id', (req,res) => {
+    const id = req.params.id;
+    const conditions = {_id: id };
+    const client = { ...req.body };
+    const update = { $set: client };
+    const options = {
+        upsert: true,
+        new: true
+    };
+    Client.findOneAndUpdate(conditions, update, options, (err, response) => {
+        if(err){return res.status(500).json({ message: 'échec de la mise à jour', error:err });} 
+        res.status(200).json({ message: `le client avec l'id ${id} a bien été mis à jour :)`});
+    });
+});
+
+/********************UTILISATEUR******************************************** */
+router.put('/utilisateur/:id', (req,res) => {
+    const id = req.params.id;
+    const conditions = {_id: id };
+    const utilisateur = { ...req.body };
+    const update = { $set: utilisateur };
+    const options = {
+        upsert: true,
+        new: true
+    };
+    Utilisateur.findOneAndUpdate(conditions, update, options, (err, response) => {
+        if(err){return res.status(500).json({ message: 'échec de la mise à jour', error:err });} 
+        res.status(200).json({ message: `l'utilisateur avec l'id ${id} a bien été mis à jour :)`});
+    });
+});
+
+/********************ENTETE******************************************** */
+router.put('/entete/:id', (req,res) => {
+    const id = req.params.id;
+    const conditions = {_id: id };
+    const entete = { ...req.body };
+    const update = { $set: entete };
+    const options = {
+        upsert: true,
+        new: true
+    };
+    Entete.findOneAndUpdate(conditions, update, options, (err, response) => {
+        if(err){return res.status(500).json({ message: 'échec de la mise à jour', error:err });} 
+        res.status(200).json({ message: `l'en-tête avec l'id ${id} a bien été mis à jour :)`});
+    });
+});
+
+  /********************************************************************** */
+ /***********************ROUTES DELETE********************************** */
+/********************************************************************** */
+
+/************************ARTICLE************************************* */
+router.delete('/article/:id', (req,res) => {
+    const id = req.params.id;
+    Article.findByIdAndDelete(id, (err,article) => {
+        if (err) {
+            return res.status(500).json({ message: `échec de la suppression de l'article avec l'id ${id} :(`});
+        }
+        res.status(202).json({ message: `Suppression de l'article avec l'id ${id} effectuée avec succès :)`});
+    });
+});
+
+/************************CLIENT************************************* */
+router.delete('/client/:id', (req,res) => {
+    const id = req.params.id;
+    Client.findByIdAndDelete(id, (err,client) => {
+        if (err) {
+            return res.status(500).json({ message: `échec de la suppression du client avec l'id ${id} :(`});
+        }
+        res.status(202).json({ message: `Suppression du client avec l'id ${id} effectuée avec succès :)`});
+    });
+});
+
+/************************UTILISATEUR************************************* */
+router.delete('/utilisateur/:id', (req,res) => {
+    const id = req.params.id;
+    Utilisateur.findByIdAndDelete(id, (err,utilisateur) => {
+        if (err) {
+            return res.status(500).json({ message: `échec de la suppression de l'utilisateur avec l'id ${id} :(`});
+        }
+        res.status(202).json({ message: `Suppression de l'utilisateur avec l'id ${id} effectuée avec succès :)`});
+    });
+});
+
+/************************ENTETE************************************* */
+router.delete('/entete/:id', (req,res) => {
+    const id = req.params.id;
+    Entete.findByIdAndDelete(id, (err,entete) => {
+        if (err) {
+            return res.status(500).json({ message: `échec de la suppression de l'en-tête avec l'id ${id} :(`});
+        }
+        res.status(202).json({ message: `Suppression de l'en-tête avec l'id ${id} effectuée avec succès :)`});
+    });
+});
+
 
 module.exports = router;
