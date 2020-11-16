@@ -10,6 +10,8 @@ import { CreationDevisComponent } from './creation-devis/creation-devis.componen
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InscriptionComponent } from './inscription/inscription.component';
+import { ConditionsComponent } from './conditions/conditions.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AcceuilComponent,
     EspaceUtilisateurComponent,
     CreationDevisComponent,
-    HeaderComponent
+    HeaderComponent,
+    InscriptionComponent,
+    ConditionsComponent
   ],
   imports: [
     BrowserModule,

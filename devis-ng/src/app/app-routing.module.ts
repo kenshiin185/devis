@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AcceuilComponent } from './acceuil/acceuil.component';
+import { ConditionsComponent } from './conditions/conditions.component';
 import { CreationArticleComponent } from './creation-article/creation-article.component';
 import { CreationDevisComponent } from './creation-devis/creation-devis.component';
 import { EspaceUtilisateurComponent } from './espace-utilisateur/espace-utilisateur.component';
 import { HeaderComponent } from './header/header.component';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 
 const routes: Routes = [
@@ -13,6 +15,8 @@ const routes: Routes = [
   {path:'header',component:HeaderComponent},
   {path:'espace-utilisateur', component:EspaceUtilisateurComponent},
   {path:'creation-devis', component:CreationDevisComponent},
+  {path:'inscription', component:InscriptionComponent},
+  {path:'conditions', component:ConditionsComponent},
   {path:'',redirectTo:'acceuil', pathMatch:'full'},
   {path:'**', redirectTo:'acceuil'}
 ];

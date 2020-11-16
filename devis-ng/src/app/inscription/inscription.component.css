@@ -1,0 +1,12 @@
+.containFormInscription {
+    width: 40%;
+    padding: 2%;
+    margin: auto;
+    margin-top: 4%;
+    border-radius: 6px;
+    text-align: center;
+}
+label {
+    font-weight: 600;
+    font-size: 1.1em;
+}
