@@ -8,10 +8,11 @@ import { AcceuilComponent } from './acceuil/acceuil.component';
 import { EspaceUtilisateurComponent } from './espace-utilisateur/espace-utilisateur.component';
 import { CreationDevisComponent } from './creation-devis/creation-devis.component';
 import { HeaderComponent } from './header/header.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { ConditionsComponent } from './conditions/conditions.component';
+import { AddCookieInterceptor } from './services/add-cookie.interceptor';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,11 @@ import { ConditionsComponent } from './conditions/conditions.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass:AddCookieInterceptor, multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

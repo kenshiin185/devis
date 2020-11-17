@@ -3,6 +3,7 @@ export interface Utilisateur {
     raisonSocialeUtilisateur: string;
     civiliteUtilisateur: string;
     nomUtilisateur: string;
+    passwordUtilisateur: string;
     prenomUtilisateur: string;
     adresseUtilisateur: string;
     codePostalUtilisateur: string;
@@ -13,8 +14,8 @@ export interface Utilisateur {
     siretUtilisateur: string;
     sirenUtilisateur: string;
     tvaIntraCommunautaireUtilisateur: string;
-    etatUtilisateur: string;
+    actif: boolean;
     dateInscriptionUtilisateur?: Date;
-    dateDernierPaiement?: Date;
+    // dateDernierPaiement?: Date;
     rgpd: string;
 }

@@ -55,7 +55,7 @@ router.get('/utilisateur', (req, res) => { // afficher la liste des utilisateurs
         }));
 });
 
-router.get('/utilisateur/:id', (req, res) => {
+router.get('/utilisateur/:id', (req, res) => { // affiche un utilisateur ciblé
     const id = req.params.id;
     Utilisateur.findById(id)
         .then(utilisateur => res.status(200).json(utilisateur))
@@ -122,15 +122,16 @@ router.post('/article', (req, res) => { //créer un article
     });
 });
 
-router.post('/utilisateur', (req, res) => { //créer un utilisateur
-    const utilisateur = new Utilisateur(req.body);
-    utilisateur.save((err, utilisateur) => {
-        if (err) {
-            return res.status(500).json(err);
-        }
-        res.status(201).json(utilisateur);
-    });
-});
+/****************route de creation utilisateur maintenant dans auth*********** */
+// router.post('/utilisateur', (req, res) => { //créer un utilisateur
+//     const utilisateur = new Utilisateur(req.body);
+//     utilisateur.save((err, utilisateur) => {
+//         if (err) {
+//             return res.status(500).json(err);
+//         }
+//         res.status(201).json(utilisateur);
+//     });
+// });
 
 router.post('/client', (req, res) => { // créer un client
     console.log('req.body', req.body); //TODO effacer cette ligne

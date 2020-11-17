@@ -20,26 +20,28 @@ export class InscriptionComponent implements OnInit {
 
   subForm() {
     this.inscriptionForm = this.formBuilder.group({
-      civiliteUtilisateur:'',
       raisonSocialeUtilisateur:'',
+      civiliteUtilisateur:'',
       nomUtilisateur:'',
       prenomUtilisateur:'',
       adresseUtilisateur:'',
       codePostalUtilisateur:'',
       villeUtilisateur:'',
       telUtilisateur:'',
+      mailUtilisateur:'',
+      passwordUtilisateur:'',
+      capitalSocialUtilisateur:'',
       siretUtilisateur:'',
       sirenUtilisateur:'',
       tvaIntraCommunautaireUtilisateur:'',
-      capitalSocialUtilisateur:'',
-      mailUtilisateur:'',
-      passwordUtilisateur:'',
       rgpd:'',
+      dateInscriptionUtilisateur:new Date(Date.now()),
       actif:false
     });
   }
   inscription(formDirective: FormGroupDirective) {
     if (this.inscriptionForm.valid) {
+      console.log('infos enregistrée: ' + this.inscriptionForm.value);
       this.utilisateurService.createUtilisateur(this.inscriptionForm.value)
       .subscribe(data => this.handleSuccess(data, formDirective),error => this.handleError(error));
     }

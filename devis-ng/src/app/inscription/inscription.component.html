@@ -1,73 +1,91 @@
-
 <div class="containFormInscription">
-<form [formGroup]="inscriptionForm" #formDirective="ngForm" (submit)="inscription()(formDirective)">
-    <h2>Inscription</h2>
-    <div class="form-group">
+    <form [formGroup]="inscriptionForm" #formDirective="ngForm" (submit)="inscription()(formDirective)">
+        <h2>Inscription</h2>
+
         <div class="form-group">
             <label for="raisonSocialUtilisateur">Raison Sociale</label>
-            <input type="text" class="form-control"placeholder="Saisissez votre raison sociale" id="raisonSocialUtilisateur" formControlName="raisonSocialeUtilisateur" required>
+            <input type="text" class="form-control" placeholder="Saisissez votre raison sociale"
+                id="raisonSocialUtilisateur" formControlName="raisonSocialeUtilisateur" required>
         </div>
         <div class="form-group">
             <label for="civilieUtilisateur">Civilité</label>
             <select class="form-control" id="civilieUtilisateur" formControlName="civiliteUtilisateur">
-              <option value="Monsieur">Monsieur</option>
-              <option value="Madame">Madame</option>
-              <option value="Mademoiselle">Mademoiselle</option>
+                <option value="Monsieur">Monsieur</option>
+                <option value="Madame">Madame</option>
+                <option value="Mademoiselle">Mademoiselle</option>
             </select>
-          </div>
+        </div>
         <div class="form-group">
             <label for="nom">Nom</label>
-            <input type="text" class="form-control"placeholder="Saisissez votre nom" id="nom" formControlName="nomUtilisateur" required>
+            <input type="text" class="form-control" placeholder="Saisissez votre nom" id="nom"
+                formControlName="nomUtilisateur" required>
         </div>
         <div class="form-group">
             <label for="prenom">Prenom</label>
-            <input type="text" class="form-control"placeholder="Saisissez votre prenom" id="prenom" formControlName="prenomUtilisateur"required>
+            <input type="text" class="form-control" placeholder="Saisissez votre prenom" id="prenom"
+                formControlName="prenomUtilisateur" required>
         </div>
         <div class="form-group">
             <label for="adresse">Adresse</label>
-            <input type="text" class="form-control"placeholder="Saisissez votre adresse" id="adresse" formControlName="adresseUtilisateur"required>
+            <input type="text" class="form-control" placeholder="Saisissez votre adresse" id="adresse"
+                formControlName="adresseUtilisateur" required>
         </div>
         <div class="form-group">
             <label for="codePostal">Code Postal</label>
-            <input type="text" class="form-control"placeholder="Saisissez votre code postal" id="codePostal" formControlName="codePostalUtilisateur"required>
+            <input type="text" class="form-control" placeholder="Saisissez votre code postal" id="codePostal"
+                formControlName="codePostalUtilisateur" required>
         </div>
         <div class="form-group">
             <label for="ville">Ville</label>
-            <input type="text" class="form-control"placeholder="Saisissez votre ville" id="ville" formControlName="villeUtilisateur"required>
+            <input type="text" class="form-control" placeholder="Saisissez votre ville" id="ville"
+                formControlName="villeUtilisateur" required>
         </div>
         <div class="form-group">
             <label for="tel">Téléphone</label>
-            <input type="text" class="form-control"placeholder="Saisissez votre numéro de téléphone" id="tel" formControlName="telUtilisateur"required>
+            <input type="text" class="form-control" placeholder="Saisissez votre numéro de téléphone" id="tel"
+                formControlName="telUtilisateur" required>
+        </div>
+        <div class="form-group">
+            <label for=" mail">Email</label>
+            <input type="email" class="form-control" placeholder="Saisissez une adresse mail valide"
+                id="mailUtilisateur" aria-describedby="emailHelp" formControlName="mailUtilisateur" required>
+            <small id="emailHelp" class="form-text text-muted">Nous ne partagerons jamais votre adresse E-mail avec qui
+                que ce soit.</small>
+        </div>
+        <div class="form-group">
+            <label for="paswwordUtilisateur">Mot de passe</label>
+            <input type="password" class="form-control" placeholder="Saisissez votre mot de passe minimum 8 caractères"
+                id="passwordUtilisateur" formControlName="passwordUtilisateur" required>
         </div>
         <div class="form-group">
             <label for="capitalSocial">Capital Social</label>
-            <input type="text" class="form-control"placeholder="Saisissez votre capital social" id="capitalSocial" formControlName="capitalSocialUtilisateur"required>
+            <input type="text" class="form-control" placeholder="Saisissez votre capital social" id="capitalSocial"
+                formControlName="capitalSocialUtilisateur" required>
         </div>
         <div class="form-group">
-            <label for="siret">Numéro de SIRET</label>
-            <input type="text" class="form-control"placeholder="Saisissez votre numéro de SIRET" id="siret" formControlName="siretUtilisateur"required>
+            <label for="siretUtilisateur">Numéro de SIRET</label>
+            <input type="text" class="form-control" placeholder="Saisissez votre numéro de SIRET" id="siretUtilisateur"
+                formControlName="siretUtilisateur" required>
         </div>
         <div class="form-group">
-            <label for="siren">Numéro de SIREN</label>
-            <input type="text" class="form-control"placeholder="Saisissez votre numéro de SIREN" id="siren" formControlName="sirenUtilisateur"required>
+            <label for="sirenUtilisateur">Numéro de SIREN</label>
+            <input type="text" class="form-control" placeholder="Saisissez votre numéro de SIREN" id="sirenUtilisateur"
+                formControlName="sirenUtilisateur" required>
         </div>
         <div class="form-group">
             <label for="tva">TVA intra-communautaire</label>
-            <input type="text" class="form-control"placeholder="Saisissez votre TVA intra communautaire" id="tva" formControlName="tvaIntraCommunautaireUtilisateur"required>
+            <input type="text" class="form-control" placeholder="Saisissez votre TVA intra communautaire" id="tva"
+                formControlName="tvaIntraCommunautaireUtilisateur" required>
         </div>
-        <label for="mail">Email</label>
-        <input type="email" class="form-control"placeholder="Saisissez une adresse mail valide" id="mail" aria-describedby="emailHelp" formControlName="mailUtilisateur"required>
-        <small id="emailHelp" class="form-text text-muted">Nous ne partagerons jamais votre adresse E-mail avec qui que ce soit.</small>
-    </div>
-    <div class="form-group">
-        <label for="paswwordUtilisateur">Mot de passe</label>
-        <input type="password" class="form-control"placeholder="Saisissez votre mot de passe minimum 8 caractères" id="passwordUtilisateur" formControlName="passwordUtilisateur"required>
-    </div>
-    <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1" value="true" formControlName="rgpd" required>
-        <label class="form-check-label" for="exampleCheck1">J'accepte les conditions d'utilisation</label><br>
-        <span>Veuillez lire les <a [routerLink]="['/conditions']"> conditions d'utilisation</a> avant de vous inscrire</span>
-    </div>
-    <button type="submit" class="btn btn-primary">S'inscrire</button>
-</form>
+
+
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" value="true" formControlName="rgpd"
+                required>
+            <label class="form-check-label" for="exampleCheck1">J'accepte les conditions d'utilisation</label><br>
+            <span>Veuillez lire les <a [routerLink]="['/conditions']"> conditions d'utilisation</a> avant de vous
+                inscrire</span>
+        </div>
+        <button type="submit" class="btn btn-primary">S'inscrire</button>
+    </form>
 </div>

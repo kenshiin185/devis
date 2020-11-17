@@ -11,9 +11,14 @@ const utilisateurSchema = new mongoose.Schema({
     telUtilisateur: String,
     capitalSocialUtilisateur: String,
     siretUtilisateur: String,
-    etatUtilisateur: String,
-    utilisateurCreatedDate: Date,
-    lastPaymentDate: Date
+    sirenUtilisateur: String,
+    mailUtilisateur: String,
+    passwordUtilisateur: String,
+    actif: Boolean,
+    tvaIntraCommunautaire: String,
+    dateInscriptionUtilisateur: Date,
+    // lastPaymentDate: Date,
+    rgpd: String
 });
 
 module.exports = mongoose.model('utilisateur', utilisateurSchema);
