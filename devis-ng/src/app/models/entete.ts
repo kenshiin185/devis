@@ -1,4 +1,4 @@
-export interface Entete {
+export class Entete {
     _id: string;
     _idUtilisateur: string;
     logo?: string;

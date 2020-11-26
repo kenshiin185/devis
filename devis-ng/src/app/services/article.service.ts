@@ -19,7 +19,7 @@ private articleCreated = new Subject<string>();
     }
 
     getArticle():Observable<Article[]> {
-        return this.httpClient.get<Article[]>(`${this.baseUrl}/`);
+        return this.httpClient.get<Article[]>(`${this.baseUrl}`);
     }
 
     dispatchArticleCreated(id:string) {

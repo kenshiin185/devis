@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Utilisateur } from '../models/utilisateur';
 import { UtilisateurAuth } from '../models/utilisateurAuth';
 import { UtilisateurService } from '../services/utilisateur.service';
 
@@ -10,21 +11,28 @@ import { UtilisateurService } from '../services/utilisateur.service';
   styleUrls: ['./acceuil.component.css']
 })
 export class AcceuilComponent implements OnInit {
-utilisateur : UtilisateurAuth = {mailUtilisateur:'', passwordUtilisateur:''}
+  utilisateur: UtilisateurAuth = { mailUtilisateur: '', passwordUtilisateur: '' }
+  _id: string = "";
   constructor(
     private utilisateurService: UtilisateurService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
   }
   authUtilisateur() {
-    this.utilisateurService.authUtilisateur(this.utilisateur).subscribe(data => this.handleSuccess(data), error => this.handleError(error));
+    this.utilisateurService.authUtilisateur(this.utilisateur).subscribe(
+      (data: Utilisateur) => {
+        this.handleSuccess(data)
+      },
+      error => this.handleError(error));
   }
 
 
   handleSuccess(data) {
-    this.router.navigate(['/creation-article']);
+    this._id = data._id;
+    this.router.navigate(['/espace-utilisateur/', this._id]);
   }
 
   handleError(error) {

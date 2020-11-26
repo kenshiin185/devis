@@ -1,4 +1,4 @@
-export interface Utilisateur {
+export class Utilisateur {
     _id: string;
     raisonSocialeUtilisateur: string;
     civiliteUtilisateur: string;

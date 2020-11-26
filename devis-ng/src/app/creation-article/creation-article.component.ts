@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormGroupDirective } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators, FormGroupDirective } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { Article } from "../models/article";
 import { ArticleService } from '../services/article.service';
 
 @Component({
@@ -8,39 +10,45 @@ import { ArticleService } from '../services/article.service';
   styleUrls: ['./creation-article.component.css']
 })
 export class CreationArticleComponent implements OnInit {
-  addArticleForm: FormGroup;
+  idRecu: string = "";
+  addArticleForm: FormGroup = new FormGroup(
+    {
+      _idUtilisateur: new FormControl(""),
+      typeArticle: new FormControl("", [Validators.required]),
+      refArticle: new FormControl("", [Validators.required]),
+      libelle: new FormControl("", [Validators.required]),
+      prix: new FormControl("", [Validators.required]),
+      coeficient: new FormControl("", [Validators.required]),
+    }
+    );
+    _idUtilisateur: string;
+
   constructor(
     private formBuilder: FormBuilder,
-    private articleService: ArticleService
+    private articleService: ArticleService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.addForm();
+
+    this.idRecu = this.route.snapshot.params.id; // permet de récupérer l'id dans l'url
+    console.log('reception creation article: ' + this.idRecu),
+      this._idUtilisateur = this.idRecu; // on attribue la valeur de idRecu à _idUtilisateur
   }
 
-  addForm() {
-    this.addArticleForm = this.formBuilder.group({
-      _idUtilisateur: '5fa90cbaeb14e31684fdc104',
-      typeArticle: '',
-      refArticle: '',
-      libelle: '',
-      prix: '',
-      coeficient: ''
-    });
+  addArticle(){
+
+    const informationProduit = new Article;
+
+    informationProduit._idUtilisateur = this.idRecu;
+    informationProduit.typeArticle = this.addArticleForm.value.typeArticle;
+    informationProduit.refArticle = this.addArticleForm.value.refArticle;
+    informationProduit.libelle = this.addArticleForm.value.libelle;
+    informationProduit.prix = this.addArticleForm.value.prix;
+    informationProduit.coeficient = this.addArticleForm.value.coeficient;
+
+    this.articleService.createArticle(informationProduit).subscribe()
+
   }
 
-  addArticle(formDirective: FormGroupDirective) {
-    if (this.addArticleForm.valid) {
-      this.articleService.createArticle(this.addArticleForm.value)
-        .subscribe(data => this.handleSuccess(data, formDirective), error => this.handleError(error));
-    }
-  }
-
-  handleSuccess(data, formDirective) {
-    this.articleService.dispatchArticleCreated(data._id);
-  }
-
-  handleError(error) {
-    console.log('Une erreur est survenue - impossible de créer article', error);
-  }
 }

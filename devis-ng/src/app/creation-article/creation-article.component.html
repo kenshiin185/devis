@@ -1,7 +1,7 @@
 <app-header></app-header>
 <div class="containFromArticle">
     <h1>Ajouter un article</h1>
-    <form [formGroup]="addArticleForm" #formDirective="ngForm" (submit)="addArticle()(formDirective)">
+    <form [formGroup]="addArticleForm"  (submit)="addArticle()">
   <div class="form-group">
     <label for="exampleInputEmail1">Référence de l'article</label>
     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="refArticle">

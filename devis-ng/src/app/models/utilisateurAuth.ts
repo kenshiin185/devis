@@ -1,4 +1,4 @@
-export interface UtilisateurAuth {
+export class UtilisateurAuth {
     isLoggedIn?: boolean;
     mailUtilisateur: string;
     passwordUtilisateur: string;

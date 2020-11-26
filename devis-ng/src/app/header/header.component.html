@@ -14,8 +14,8 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" [routerLink]="['/espace-utilisateur']">Votre espace personnel</a>
-                      <a class="dropdown-item" >Editer/modifier votre en-tête</a>
-                      <a class="dropdown-item" >Mon abonnement</a>
+                      <a class="dropdown-item" [routerLink]="['/edit-entete']">Editer/modifier votre en-tête</a>
+                      <a class="dropdown-item"  [routerLink]="['/abonnement']">Mon abonnement</a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item text-danger" (click)="logOut()">Déconnexion</a>
                     </div>
@@ -26,13 +26,15 @@
                       Clients
                     </a>
                     <div class="dropdown-menu " aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" [routerLink]="['/espace-utilisateur']">Tous vos clients</a>
-                      <a class="dropdown-item" [routerLink]="['/espace-utilisateur']">Ajouter un client</a>
+                      <a class="dropdown-item" [routerLink]="['/liste-client']">Tous vos clients</a>
+                      <a class="dropdown-item" [routerLink]="['/ajout-client']">Ajouter un client</a>
                       
                     </div>
                   </li>
 
             </ul>
         </div>
+        
+       
     </div>
 </nav>

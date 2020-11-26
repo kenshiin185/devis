@@ -1,0 +1,21 @@
+{
+  "name": "devisback",
+  "version": "1.0.0",
+  "description": "serveur nodejs express pour génération de devis et factures",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "devis",
+    "mongoose",
+    "MEAN"
+  ],
+  "author": "Castadela",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

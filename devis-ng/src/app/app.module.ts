@@ -13,6 +13,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { ConditionsComponent } from './conditions/conditions.component';
 import { AddCookieInterceptor } from './services/add-cookie.interceptor';
+import { EditEnteteComponent } from './edit-entete/edit-entete.component';
+import { AbonnementComponent } from './abonnement/abonnement.component';
+import { AjoutClientComponent } from './ajout-client/ajout-client.component';
+import { ListeClientComponent } from './liste-client/liste-client.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,11 @@ import { AddCookieInterceptor } from './services/add-cookie.interceptor';
     CreationDevisComponent,
     HeaderComponent,
     InscriptionComponent,
-    ConditionsComponent
+    ConditionsComponent,
+    EditEnteteComponent,
+    AbonnementComponent,
+    AjoutClientComponent,
+    ListeClientComponent
   ],
   imports: [
     BrowserModule,

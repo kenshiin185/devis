@@ -36,14 +36,15 @@ router.get('/article', (req, res) => { // afficher la liste des articles
 router.get('/article/:id', (req, res) => {
     const id = req.params.id;
     Article.findById(id)
-        .then(article => res.status(200).json(article))
-        .catch(err => res.status(500).json({
-            message: `article avec l'Id ${id} introuvable (:(>`,
-            error: err
-        }));
+    .then(article => res.status(200).json(article))
+    .catch(err => res.status(500).json({
+        message: `article avec l'Id ${id} introuvable (:(>`,
+        error: err
+    }));
 });
 
 /**************************UTILISATEUR****************************************** */
+
 router.get('/utilisateur', (req, res) => { // afficher la liste des utilisateurs
     Utilisateur.find()
         .sort({ 'createdOn': -1 })
@@ -54,7 +55,6 @@ router.get('/utilisateur', (req, res) => { // afficher la liste des utilisateurs
             error: err
         }));
 });
-
 router.get('/utilisateur/:id', (req, res) => { // affiche un utilisateur ciblé
     const id = req.params.id;
     Utilisateur.findById(id)

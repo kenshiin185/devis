@@ -1,5 +1,5 @@
-export interface Article {
-    _id: string;
+export class Article {
+    _id?: string;
     _idUtilisateur: string;
     typeArticle: string;
     refArticle: string;

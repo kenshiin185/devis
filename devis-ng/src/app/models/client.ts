@@ -1,4 +1,4 @@
-export interface Client {
+export class Client {
     _id: string;
     _idUtilisateur: string;
     raisonSocialeClient?: string;
