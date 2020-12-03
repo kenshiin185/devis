@@ -16,6 +16,5 @@ export class Utilisateur {
     tvaIntraCommunautaireUtilisateur: string;
     actif: boolean;
     dateInscriptionUtilisateur?: Date;
-    // dateDernierPaiement?: Date;
     rgpd: string;
 }

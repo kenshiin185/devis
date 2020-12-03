@@ -2,7 +2,7 @@
 <h2>Liste de vos articles</h2>
 
 <div class="containListArticle">
-    <button class="btn btn-primary ml-auto" type="button"(click)="navigWithId()"><i
+    <button class="btn btn-primary ml-auto" type="button" (click)="navigWithId()"><i
             class="fas fa-plus"></i>Ajouter</button>
     <div *ngFor="let element of listeArticleUtilisateur" class="listArticle">
         {{element.libelle}}

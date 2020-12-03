@@ -2,11 +2,11 @@ const Article = require('../models/Article');
 
 
 exports.createArticle = (req, res, next) => {
-    const articleObject = JSON.parse(req.body.article);
-    delete articleObject._id;
+    // const articleObject = JSON.parse(req.body.article);
+    delete req.body._id;
     const article = new Article({
-        ...articleObject
-    });
+        ...req.body
+    })
     article.save()
         .then(() => res.status(201).json({ message: 'article sauvegardé' }))
         .catch(error => res.status(400).json({ error }));
@@ -37,6 +37,6 @@ exports.getSingleArticle = (req, res, next) => {
 
 exports.getArticles = (req,res,next) => {
     Article.find()
-    .then(()=> res.status(200).json(articles))
+    .then( articles => res.status(200).json(articles))
     .catch(error => res.status(400).json({ error }));
 }

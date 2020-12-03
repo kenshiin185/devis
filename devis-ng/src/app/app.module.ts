@@ -17,6 +17,7 @@ import { EditEnteteComponent } from './edit-entete/edit-entete.component';
 import { AbonnementComponent } from './abonnement/abonnement.component';
 import { AjoutClientComponent } from './ajout-client/ajout-client.component';
 import { ListeClientComponent } from './liste-client/liste-client.component';
+import { AuthInterceptor } from './interceptors/auth-interceptors';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { ListeClientComponent } from './liste-client/liste-client.component';
   ],
   providers: [
     {
-      provide: HTTP_INTERCEPTORS, useClass:AddCookieInterceptor, multi:true
+      provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true
     }
   ],
   bootstrap: [AppComponent]

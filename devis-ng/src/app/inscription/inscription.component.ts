@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormGroupDirective} from '@angular/forms';
+import { Router } from '@angular/router';
 import { UtilisateurService } from '../services/utilisateur.service';
 
 @Component({
@@ -11,7 +12,8 @@ export class InscriptionComponent implements OnInit {
   inscriptionForm:FormGroup
   constructor(
     private formBuilder:FormBuilder,
-    private utilisateurService: UtilisateurService
+    private utilisateurService: UtilisateurService,
+    private router:Router
   ) { }
 
   ngOnInit() {
@@ -34,9 +36,9 @@ export class InscriptionComponent implements OnInit {
       siretUtilisateur:'',
       sirenUtilisateur:'',
       tvaIntraCommunautaireUtilisateur:'',
-      rgpd:'',
+      actif:false,
       dateInscriptionUtilisateur:new Date(Date.now()),
-      actif:false
+      rgpd:'',
     });
   }
   inscription(formDirective: FormGroupDirective) {
@@ -49,6 +51,8 @@ export class InscriptionComponent implements OnInit {
 
   handleSuccess(data, formDirective) {
     this.utilisateurService.dispatchUtilisateurCreated(data._id);
+    console.log(data);
+    this.router.navigate(['/accueil']);
   }
 
   handleError(error) {

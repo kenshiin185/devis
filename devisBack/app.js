@@ -7,6 +7,7 @@ const app = express();
 const utilisateurRoutes = require('./routes/utilisateur');
 const articleRoutes = require('./routes/article');
 const path = require('path');
+app.use(cors({credentials:true, origin:'http://localhost:4200'}));
 //TODO ajouter ici les imports de routes pour les différentes collections
 
 
@@ -29,9 +30,8 @@ connection.once('open', () => {
 app.get('/test', (req,res) => {
     res.status(200).json({ message: 'Connexion de test réussie :)'});
 });
-
 app.use(bodyParser.json());
+app.use('/api/article/', articleRoutes);
 app.use('/api/auth', utilisateurRoutes);
-app.use('/api/auth', articleRoutes)
 
 module.exports = app;

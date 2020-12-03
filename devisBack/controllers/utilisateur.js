@@ -56,3 +56,14 @@ exports.login = (req, res, next) => {
         })
         .catch(error => res.status(500).json({ error }));
 };
+
+exports.logout = (req,res,next) => {
+    res.status(200).json({ // valide ok on te fait un token 
+        userId: "",
+        token: jwt.sign(
+            { userId: utilisateur._id },
+            'RANDOM_TOKEN_SECRET',
+            { expiresIn: '24h' }
+        )
+    });
+};

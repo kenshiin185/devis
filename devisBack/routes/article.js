@@ -2,16 +2,16 @@ const express = require('express');
 
 const router = express.Router();
 const articleCtrl = require('../controllers/article');
-const auth = require('../middleware/auth');
+// const auth = require('../middleware/auth');
 
-router.post('/', auth, articleCtrl.createArticle);
+router.post('/', articleCtrl.createArticle);
 
-router.delete('/:id', auth, articleCtrl.deleteArticle);
+router.delete('/:id', articleCtrl.deleteArticle);
 
-router.put('/:id', auth, articleCtrl.modifyArticle);
+router.put('/:id', articleCtrl.modifyArticle);
 
-router.get('/:id', auth, articleCtrl.getSingleArticle);
+router.get('/:id', articleCtrl.getSingleArticle);
 
-router.get('/', auth, articleCtrl.getArticles);
+router.get('/', articleCtrl.getArticles);
 
 module.exports = router;

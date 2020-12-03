@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, FormGroupDirective } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Article } from "../models/article";
 import { ArticleService } from '../services/article.service';
 
@@ -26,7 +26,8 @@ export class CreationArticleComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private articleService: ArticleService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router:Router
   ) { }
 
   ngOnInit() {
@@ -47,8 +48,18 @@ export class CreationArticleComponent implements OnInit {
     informationProduit.prix = this.addArticleForm.value.prix;
     informationProduit.coeficient = this.addArticleForm.value.coeficient;
 
-    this.articleService.createArticle(informationProduit).subscribe()
-
+    this.articleService.createArticle(informationProduit).subscribe(
+      data => this.handleSuccess(data,this.addArticle), error => this.handleError(error))
+    
   }
 
+  handleSuccess(data, formDirective) {
+    this.articleService.dispatchArticleCreated(data._id);
+    console.log(data);
+    this.router.navigate(['/espace-utilisateur']);
+  }
+
+  handleError(error) {
+    console.log('Une erreur est survenue lors de la validation du formulaire - Impossible de créer l\'article :( ');
+  }
 }
