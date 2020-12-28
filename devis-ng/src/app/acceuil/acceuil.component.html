@@ -1,23 +1,25 @@
 <div class="containFormAuthentification">
-    <h1>Veuillez vous connecter</h1>
-<form [formGroup]="loginForm" #authForm="ngForm">
+  <h1>Veuillez vous connecter</h1>
+  <form [formGroup]="loginForm" #authForm="ngForm">
     <div class="form-group">
       <label for="exampleInputEmail1">Mail</label>
-      <input type="email" id="mailUtilisateur" formControlName="mailUtilisateur"  class="form-control">
+      <input type="email" id="mailUtilisateur" formControlName="mailUtilisateur" class="form-control">
     </div>
 
     <div class="form-group">
       <label for="exampleInputPassword1">Mot de passe</label>
-      <input type="password"  id="password" formControlName="passwordUtilisateur" class="form-control">
+      <input type="password" id="password" formControlName="passwordUtilisateur" class="form-control">
     </div>
 
-    <!-- <div class="form-group form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Se souvenir de moi</label>
-    </div> -->
 
-    <button class="btn btn-primary" type="submit"[disabled]="!authForm.form.valid" (click)="onLogin()">Connexion</button>
+    <button class="btn btn-primary" type="submit" [disabled]="!authForm.form.valid"
+      (click)="onLogin()">Connexion</button>
   </form>
   <span>Je ne suis pas encore inscrit <a [routerLink]="['/inscription']">Créer un compte</a></span>
-  
+
+</div>
+<div class="wspin">
+  <div class="spinner-border text-primary" role="status" *ngIf="loading">
+    <span class="sr-only">loading...</span>
+  </div>
 </div>

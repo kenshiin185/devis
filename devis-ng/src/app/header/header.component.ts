@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
   userId: string;
   idRecu: string = "";
   token: string = "";
+  _id:string="";
   public isAuth: Boolean;
   private isAuthSub: Subscription
   constructor(
@@ -28,8 +29,10 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    
     this.idRecu = this.route.snapshot.params.id;
     this.token = this.route.snapshot.params.token;
+    console.log('id recu: ' + this.idRecu);
     this.isAuthSub = this.utilisateurService.isAuth$.subscribe(
       (utilisateurService) => {
         this.isAuth = utilisateurService;
@@ -40,13 +43,29 @@ export class HeaderComponent implements OnInit {
       console.log('test', data);
       console.log('id recu: ' + this.idRecu);
     });
-    console.log('rere: ' + this.isAuth);
-    console.log('tok', this.token);
+   
   }
 
   onLogout() {
     this.utilisateurService.logOut()
     this.router.navigate(['/accueil']);
 
+  }
+
+  navigWithId() {
+    this._id = this.idRecu;
+    this.router.navigate([`/edit-entete/`, this.idRecu]);
+  }
+  navigClientWithId() {
+    this._id = this.idRecu;
+    this.router.navigate([`/ajout-client/`, this.idRecu]);
+  }
+  navigListClientWithId() {
+    this._id = this.idRecu;
+    this.router.navigate([`/liste-client/`, this.idRecu])
+  }
+  navigEspaceWithId() {
+    this._id = this.idRecu;
+    this.router.navigate([`/espace-utilisateur/`, this.idRecu]);
   }
 }

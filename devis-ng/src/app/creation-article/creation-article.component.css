@@ -1,5 +1,15 @@
-.containFromArticle{
+.containFormArticle{
     width: 50%;
     margin: auto;
     margin-top: 4%;
+}
+.spinner-border {
+    width: 80px;
+    height: 80px;
+    margin: auto;
+    text-align: center;
+}
+.wspin {
+    display: flex;
+    justify-content: center;
 }

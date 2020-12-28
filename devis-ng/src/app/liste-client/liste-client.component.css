@@ -1,0 +1,26 @@
+.containListArticle {
+    margin: auto;
+    margin-top: 3%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.listClient {
+    margin-top: 1%;
+    border-bottom: 1px solid #777;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: auto;
+    justify-content: space-between;
+}
+h2 {
+    text-align: center;
+}
+.fas {
+    height: 35px;
+    width: 35px;
+    font-size: 2em;
+    margin-left: 15px;
+    
+}

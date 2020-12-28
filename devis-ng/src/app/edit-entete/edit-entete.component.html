@@ -1,1 +1,56 @@
-<p>edit-entete works!</p>
+
+<app-header></app-header>
+<div class="containFromArticle">
+    <h1>Créez votre entête</h1>
+    <form [formGroup]="editEnteteForm">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Raison sociale *</label>
+    <input type="text" class="form-control" id="raisonSociale" aria-describedby="emailHelp" formControlName="raisonSociale">
+    
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Adresse *</label>
+    <input type="text" class="form-control" id="adresse" aria-describedby="emailHelp" formControlName="adresse">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Code postal *</label>
+    <input type="text" class="form-control" id="codePostal" formControlName="codePostal" required>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Ville *</label>
+    <input type="text" class="form-control" id="ville" formControlName="ville" required>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Téléphone</label>
+    <input type="text" class="form-control" id="tel" formControlName="tel" required>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">Capital social</label>
+    <input type="text" class="form-control" id="capitalSocial" formControlName="capitalSocial" required>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">Numéro de SIRET</label>
+    <input type="text" class="form-control" id="siret" formControlName="siret" required>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">Numéro de SIREN</label>
+    <input type="text" class="form-control" id="siren" formControlName="siren" required>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">TVA intracommunautaire</label>
+    <input type="text" class="form-control" id="tvaIntraCommunautaire" formControlName="tvaIntraCommunautaire" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="exampleInputPassword1">Logo</label>
+    <input type="file" class="form-control" id="logo" formControlName="logo"(change)="onImagePick($event)">
+  </div>
+ 
+  <button  class="btn btn-primary" (click)="onSubmit()">Enregistrer</button>
+</form>
+<p style="margin-top:20px;color:red;">Les champs marqués d'une * sont obligatoires</p>
+</div>

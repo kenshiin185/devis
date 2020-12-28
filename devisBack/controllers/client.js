@@ -2,10 +2,10 @@ const Client = require('../models/Client');
 
 
 exports.createClient = (req, res, next) => {
-    const clientObject = JSON.parse(req.body.client);
-    delete clientObject._id;
+    // const clientObject = JSON.parse(req.body.client);
+    delete req.body._id;
     const client = new Client({
-        ...clientObject
+        ...req.body
     });
     client.save()
         .then(() => res.status(201).json({ message: 'client sauvegardé' }))
@@ -37,6 +37,6 @@ exports.getSingleClient = (req, res, next) => {
 
 exports.getClients = (req,res,next) => {
     Client.find()
-    .then(()=> res.status(200).json(articles))
+    .then(clients=> res.status(200).json(clients))
     .catch(error => res.status(400).json({ error }));
 }

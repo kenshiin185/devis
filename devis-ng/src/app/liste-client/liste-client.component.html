@@ -1,1 +1,15 @@
-<p>liste-client works!</p>
+<app-header></app-header>
+<h2>Liste de vos clients</h2>
+
+<div class="containListArticle">
+   
+    <div *ngFor="let element of listeClientUtilisateur" class="listClient">
+        {{element.raisonSocialeClient}} ({{element.villeClient}}) 
+        <div class="containAction">
+          <a [routerLink]="['/creation-devis',element._id]"> <i class="fas fa-file-invoice-dollar"></i></a>
+          <a [routerLink]="['/modify-client',element._id]"> <i class="fas fa-edit"  ></i></a>
+            <i class="fas fa-trash" style="color:red"(click)="deleteClient(element._id)"></i>
+            
+        </div>
+    </div>
+</div>

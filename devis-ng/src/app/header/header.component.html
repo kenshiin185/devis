@@ -13,8 +13,8 @@
                       Utilisateur
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" [routerLink]="['/espace-utilisateur']">Votre espace personnel</a>
-                      <a class="dropdown-item" [routerLink]="['/edit-entete']">Editer/modifier votre en-tête</a>
+                      <a class="dropdown-item" (click)="navigEspaceWithId()">Votre espace personnel</a>
+                      <a class="dropdown-item" (click)="navigWithId()">Editer/modifier votre en-tête</a>
                       <a class="dropdown-item"  [routerLink]="['/abonnement']">Mon abonnement</a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item text-danger" style="cursor: pointer;" (click)="onLogout()">Déconnexion</a>
@@ -26,8 +26,8 @@
                       Clients
                     </a>
                     <div class="dropdown-menu " aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" [routerLink]="['/liste-client']">Tous vos clients</a>
-                      <a class="dropdown-item" [routerLink]="['/ajout-client']">Ajouter un client</a>
+                      <a class="dropdown-item" (click)="navigListClientWithId()">Tous vos clients</a>
+                      <a class="dropdown-item" (click)="navigClientWithId()">Ajouter un client</a>
                       
                     </div>
                   </li>

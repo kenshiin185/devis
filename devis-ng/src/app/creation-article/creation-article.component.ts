@@ -10,6 +10,7 @@ import { ArticleService } from '../services/article.service';
   styleUrls: ['./creation-article.component.css']
 })
 export class CreationArticleComponent implements OnInit {
+  loading = false;
   idRecu: string = "";
   addArticleForm: FormGroup = new FormGroup(
     {
@@ -38,7 +39,7 @@ export class CreationArticleComponent implements OnInit {
   }
 
   addArticle(){
-
+    this.loading = true;
     const informationProduit = new Article;
 
     informationProduit._idUtilisateur = this.idRecu;
@@ -46,7 +47,7 @@ export class CreationArticleComponent implements OnInit {
     informationProduit.refArticle = this.addArticleForm.value.refArticle;
     informationProduit.libelle = this.addArticleForm.value.libelle;
     informationProduit.prix = this.addArticleForm.value.prix;
-    informationProduit.coeficient = this.addArticleForm.value.coeficient;
+    informationProduit.coefficient = this.addArticleForm.value.coeficient;
 
     this.articleService.createArticle(informationProduit).subscribe(
       data => this.handleSuccess(data,this.addArticle), error => this.handleError(error))
@@ -54,12 +55,14 @@ export class CreationArticleComponent implements OnInit {
   }
 
   handleSuccess(data, formDirective) {
+    this.loading = false;
     this.articleService.dispatchArticleCreated(data._id);
     console.log(data);
-    this.router.navigate(['/espace-utilisateur']);
+    this.router.navigate(['/espace-utilisateur', this.idRecu]);
   }
 
   handleError(error) {
+    this.loading = false;
     console.log('Une erreur est survenue lors de la validation du formulaire - Impossible de créer l\'article :( ');
   }
 }

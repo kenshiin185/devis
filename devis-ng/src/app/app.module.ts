@@ -18,6 +18,9 @@ import { AbonnementComponent } from './abonnement/abonnement.component';
 import { AjoutClientComponent } from './ajout-client/ajout-client.component';
 import { ListeClientComponent } from './liste-client/liste-client.component';
 import { AuthInterceptor } from './interceptors/auth-interceptors';
+import { ModifyArticleComponent } from './modify-article/modify-article.component';
+import { ModifyClientComponent } from './modify-client/modify-client.component';
+import { ConfirmDelArticleComponent } from './confirm-del-article/confirm-del-article.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { AuthInterceptor } from './interceptors/auth-interceptors';
     EditEnteteComponent,
     AbonnementComponent,
     AjoutClientComponent,
-    ListeClientComponent
+    ListeClientComponent,
+    ModifyArticleComponent,
+    ModifyClientComponent,
+    ConfirmDelArticleComponent
   ],
   imports: [
     BrowserModule,

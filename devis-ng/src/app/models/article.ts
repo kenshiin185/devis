@@ -5,6 +5,6 @@ export class Article {
     refArticle: string;
     libelle:string;
     prix: number;
-    coeficient: number;
+    coefficient: number;
 
 }

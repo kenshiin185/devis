@@ -11,7 +11,7 @@ const clientSchema = mongoose.Schema({
     villeClient: { type: String },
     paysClient: { type: String },
     telClient: { type: String },
-    clientCreatedDate: { type: Date }
+    dateCreationClient: { type: Date }
 });
 
 module.exports = mongoose.model('client', clientSchema);

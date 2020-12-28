@@ -12,6 +12,7 @@ import { UtilisateurService } from '../services/utilisateur.service';
   styleUrls: ['./acceuil.component.css']
 })
 export class AcceuilComponent implements OnInit {
+  loading = false;
   loginForm: FormGroup;
   token:string="";
   _id: string = "";
@@ -30,18 +31,21 @@ export class AcceuilComponent implements OnInit {
     });
   }
   onLogin() {
+    this.loading = true;
     const mailUtilisateur = this.loginForm.get('mailUtilisateur').value;
     const passwordUtilisateur = this.loginForm.get('passwordUtilisateur').value;
     this.utilisateurService.login(mailUtilisateur, passwordUtilisateur).then(
       () => {
         this._id = this.utilisateurService.userId;
         this.token = this.utilisateurService.token;
+        this.loading = false;
         this.router.navigate(['/espace-utilisateur', this._id]);
         console.log('token passé !!!', this.token);
         console.log('id passé !!!', this._id);
       }
     ).catch(
       (error) => {
+        this.loading = false;
         console.log('erreur de connexion ' + error);
       }
     );
