@@ -7,7 +7,7 @@
     <div *ngFor="let element of listeArticleUtilisateur" class="listArticle">
         {{element.libelle}}
         <div class="containAction">
-          <a [routerLink]="['/modify-article',element._id]"> <i class="fas fa-edit" style="color:blue" ></i></a>
+          <a [routerLink]="['/modify-article',element._idUtilisateur,element._id]"> <i class="fas fa-edit" style="color:blue" ></i></a>
             <a [routerLink]="['/confirm-del-article',element._idUtilisateur,element._id]"><i class="fas fa-trash" style="color:red"></i></a>
         </div>
     </div>

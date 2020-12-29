@@ -6,9 +6,9 @@
     <div *ngFor="let element of listeClientUtilisateur" class="listClient">
         {{element.raisonSocialeClient}} ({{element.villeClient}}) 
         <div class="containAction">
-          <a [routerLink]="['/creation-devis',element._id]"> <i class="fas fa-file-invoice-dollar"></i></a>
-          <a [routerLink]="['/modify-client',element._id]"> <i class="fas fa-edit"  ></i></a>
-            <i class="fas fa-trash" style="color:red"(click)="deleteClient(element._id)"></i>
+          <a [routerLink]="['/creation-devis',element._idUtilisateur,element._id]"> <i class="fas fa-file-invoice-dollar"></i></a>
+          <a [routerLink]="['/modify-client',element._idUtilisateur,element._id]"> <i class="fas fa-edit"  ></i></a>
+          <a [routerLink]="['/confirm-del-client',element._idUtilisateur,element._id]"><i class="fas fa-trash" style="color:red"></i></a>
             
         </div>
     </div>

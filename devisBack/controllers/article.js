@@ -2,7 +2,7 @@ const Article = require('../models/Article');
 
 
 exports.createArticle = (req, res, next) => {
-    // const articleObject = JSON.parse(req.body.article);
+   
     delete req.body._id;
     const article = new Article({
         ...req.body

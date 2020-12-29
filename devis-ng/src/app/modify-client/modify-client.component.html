@@ -1,1 +1,60 @@
-<p>modify-client works!</p>
+<app-header></app-header>
+<div class="containFormClient">
+    <h1>Modification infos client</h1>
+    <form [formGroup]="updateClientForm"  (submit)="updateClient()">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Raison sociale *</label>
+    <input type="text" class="form-control" id="raisonSocialeClient"value="{{data.raisonSocialeClient}}" aria-describedby="emailHelp" formControlName="raisonSocialeClient">
+    
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Civilité *</label>
+   <select name="civiliteClient" id="civiliteClient" formControlName="civiliteClient" >
+       <option value="produit">Monsieur</option>
+       <option value="main d'oeuvre">Madame</option>
+       <option value="service">Mademoiselle</option> 
+   </select>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">Nom *</label>
+    <input type="text" class="form-control" id="nomClient" value="{{data.nomClient}}" formControlName="nomClient" required>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Prénom *</label>
+    <input type="text" class="form-control" id="prenomClient"value="{{data.prenomClient}}" formControlName="prenomClient" required>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Adresse*</label>
+    <input type="text" class="form-control" id="adresseClient"value="{{data.adresseClient}}" formControlName="adresseClient" required>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Code postal *</label>
+    <input type="text" class="form-control" id="codePostalClient"value="{{data.codePostalClient}}" formControlName="codePostalClient" required>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Ville *</label>
+    <input type="text" class="form-control" id="villeClient"value="{{data.villeClient}}" formControlName="villeClient" required>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Pays *</label>
+    <input type="text" class="form-control" id="paysClient"value="{{data.paysClient}}" formControlName="paysClient" required>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Adresse mail *</label>
+    <input type="text" class="form-control" id="mailClient"value="{{data.mailClient}}" formControlName="mailClient" required>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Téléphone *</label>
+    <input type="text" class="form-control" id="telClient"value="{{data.telClient}}" formControlName="telClient" required>
+  </div>
+ 
+  
+ 
+  <button type="submit"[disabled]="!updateClientForm.valid" class="btn btn-success">Enregistrer</button>
+  <button type="submit" class="btn btn-danger"(click)="cancel()">Annuler</button>
+</form>
+<p style="margin-top:20px;color:red;">Les champs marqués d'une * sont obligatoires</p>
+</div>
+
+

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const enteteSchema = mongoose.Schema({
     _idUtilisateur: { type: String },
-    logo: { type: String },
+   
     raisonSociale: { type: String },
     adresse: { type: String },
     codePostal: { type: String },

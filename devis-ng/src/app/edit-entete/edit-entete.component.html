@@ -2,7 +2,7 @@
 <app-header></app-header>
 <div class="containFromArticle">
     <h1>Créez votre entête</h1>
-    <form [formGroup]="editEnteteForm">
+    <form [formGroup]="editEnteteForm" (submit)="onSubmit()">
   <div class="form-group">
     <label for="exampleInputEmail1">Raison sociale *</label>
     <input type="text" class="form-control" id="raisonSociale" aria-describedby="emailHelp" formControlName="raisonSociale">
@@ -45,12 +45,12 @@
     <input type="text" class="form-control" id="tvaIntraCommunautaire" formControlName="tvaIntraCommunautaire" required>
   </div>
   
-  <div class="form-group">
+  <!-- <div class="form-group">
     <label for="exampleInputPassword1">Logo</label>
     <input type="file" class="form-control" id="logo" formControlName="logo"(change)="onImagePick($event)">
-  </div>
+  </div> -->
  
-  <button  class="btn btn-primary" (click)="onSubmit()">Enregistrer</button>
+  <button type="submit" class="btn btn-primary" >Enregistrer</button>
 </form>
 <p style="margin-top:20px;color:red;">Les champs marqués d'une * sont obligatoires</p>
 </div>

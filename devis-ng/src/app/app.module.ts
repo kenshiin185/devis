@@ -21,6 +21,7 @@ import { AuthInterceptor } from './interceptors/auth-interceptors';
 import { ModifyArticleComponent } from './modify-article/modify-article.component';
 import { ModifyClientComponent } from './modify-client/modify-client.component';
 import { ConfirmDelArticleComponent } from './confirm-del-article/confirm-del-article.component';
+import { ConfirmDelClientComponent } from './confirm-del-client/confirm-del-client.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ConfirmDelArticleComponent } from './confirm-del-article/confirm-del-ar
     ListeClientComponent,
     ModifyArticleComponent,
     ModifyClientComponent,
-    ConfirmDelArticleComponent
+    ConfirmDelArticleComponent,
+    ConfirmDelClientComponent
   ],
   imports: [
     BrowserModule,

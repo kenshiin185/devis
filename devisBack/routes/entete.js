@@ -5,7 +5,7 @@ const enteteCtrl = require('../controllers/entete');
 const auth = require('../middleware/auth');
 const multer = require('../middleware/multer-config');
 
-router.post('/',auth, multer, enteteCtrl.createEntete);
+router.post('/', enteteCtrl.createEntete);
 
 router.delete('/:id', enteteCtrl.deleteEntete);
 

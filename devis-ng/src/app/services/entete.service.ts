@@ -15,25 +15,25 @@ export class EnteteService {
     private httpClient: HttpClient,
     private route: ActivatedRoute
   ) { }
-  // createEntete(post: Entete) {
-  //   this.idRecu = this.route.snapshot.params.id;
-  //   return this.httpClient.post<Entete>(this.baseUrl, post);
-  // }
-createEntete(entete: Entete, image: File) {
-  return new Promise((resolve, reject) => {
-    const enteteData = new FormData();
-    enteteData.append('entete', JSON.stringify(entete));
-    enteteData.append('image', image);
-    this.httpClient.post(`${this.baseUrl}`, enteteData).subscribe(
-      (response)=> {
-        resolve(response);
-      },
-      (error) => {
-        reject(error);
-      }
-    );
-  });
-}
+  createEntete(post: Entete) {
+    this.idRecu = this.route.snapshot.params.id;
+    return this.httpClient.post<Entete>(this.baseUrl, post);
+  }
+// createEntete(entete: Entete, image: File) {
+//   return new Promise((resolve, reject) => {
+//     const enteteData = new FormData();
+//     enteteData.append('entete', JSON.stringify(entete));
+//     enteteData.append('image', image);
+//     this.httpClient.post(`${this.baseUrl}`, enteteData).subscribe(
+//       (response)=> {
+//         resolve(response);
+//       },
+//       (error) => {
+//         reject(error);
+//       }
+//     );
+//   });
+// }
   dispatchEnteteCreated(id:string) {
     return this.enteteCreated.next(id);
   }

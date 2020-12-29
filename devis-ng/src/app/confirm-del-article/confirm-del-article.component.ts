@@ -44,4 +44,8 @@ export class ConfirmDelArticleComponent implements OnInit {
   handleError(error) {
     console.log('erreur :',error);
   }
+
+  cancel() {
+    this.router.navigate(['/espace-utilisateur/',this.idRecu]);
+  }
 }

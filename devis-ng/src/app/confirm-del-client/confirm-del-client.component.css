@@ -1,0 +1,18 @@
+
+.clientToDel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 5%;
+   
+}
+h1 {
+    margin-bottom: 5%;
+    font-family: serif;
+    font-weight: 600;
+}
+.card {
+    background-color: rgb(172, 172, 172);
+    box-shadow: 4px 4px 12px grey;
+}

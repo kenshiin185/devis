@@ -13,6 +13,7 @@ export class ModifyArticleComponent implements OnInit {
   article$;
   loading = false;
   idRecu: string = "";
+  idArticleRecu:any;
   modifyArticleForm: FormGroup = new FormGroup(
     {
       _idUtilisateur: new FormControl(""),
@@ -34,15 +35,16 @@ export class ModifyArticleComponent implements OnInit {
 
   ngOnInit() {
 
-
-    this.idRecu = this.route.snapshot.paramMap.get('_id'); // permet de récupérer l'id dans l'url
-    console.log('reception creation article: ' + this.idRecu),
-      this._id = this.idRecu; // on attribue la valeur de idRecu à _id
-    this.articleService.getSingleArticle(this._id);
+    this.idArticleRecu = this.route.snapshot.params.idArt;
+    this.idRecu = this.route.snapshot.params.id; // permet de récupérer l'id dans l'url
+    console.log('id de l\'utilisateur : ' + this.idRecu),
+    console.log('id de l\'article sélectionné : ' + this.idArticleRecu),
+      // this.idArticleRecu = this.idRecu; // on attribue la valeur de idRecu à _id
+    this.articleService.getSingleArticle(this.idArticleRecu);
     this.singleArticle();
   }
   singleArticle() {
-    this.articleService.getSingleArticle(this.idRecu)
+    this.articleService.getSingleArticle(this.idArticleRecu)
       .subscribe((data) => {
         this.data = data;
         console.log('singleArticle: ', data);
@@ -52,10 +54,10 @@ export class ModifyArticleComponent implements OnInit {
 
   modifyArticle(formDirective: FormGroupDirective) {
     this.loading = true;
-    console.log('avant modif :: ',this.data);
+   
     const informationProduit = this.data;
-    informationProduit._id = this._id;
-    // informationProduit._idUtilisateur = this.idRecu;
+    informationProduit._id = this.idArticleRecu;
+    informationProduit._idUtilisateur = this.idRecu;
     informationProduit.refArticle = this.modifyArticleForm.value.refArticle;
     informationProduit.typeArticle = this.modifyArticleForm.value.typeArticle;
     informationProduit.libelle = this.modifyArticleForm.value.libelle;
@@ -71,7 +73,7 @@ export class ModifyArticleComponent implements OnInit {
     console.log('Mise à jour de l\'article réussie', data);
    
     this.articleService.dispatchArticleCreated(data._id);
-    this.router.navigate(['/espace-utilisateur', data._idUtilisateur]);
+    this.router.navigate(['/espace-utilisateur', this.idRecu]);
   }
 
   handleError(error) {

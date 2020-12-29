@@ -2,11 +2,10 @@ const Entete = require('../models/Entete');
 
 
 exports.createEntete = (req, res, next) => {
-   const enteteObject = JSON.parse(req.body.entete);
-    delete enteteObject._id;
+
+    delete req.body._id;
     const entete = new Entete({
-        ...enteteObject,
-        logo:`${req.protocol}://${req.get('host')}/api/images/${req.file.filename}`
+        ...req.body
     });
     entete.save()
         .then(() => res.status(201).json({ message: 'entête sauvegardée' }))

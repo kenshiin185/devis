@@ -10,6 +10,7 @@ const clientSchema = mongoose.Schema({
     codePostalClient: { type: String },
     villeClient: { type: String },
     paysClient: { type: String },
+    mailClient: { type: String },
     telClient: { type: String },
     dateCreationClient: { type: Date }
 });

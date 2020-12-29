@@ -44,62 +44,63 @@ export class EditEnteteComponent implements OnInit {
       siret:  [null, Validators.required],
       siren:  [null, Validators.required],
       tvaIntraCommunautaire: [null, Validators.required],
-      logo:  [null, Validators.required]
+      // logo:  [null, Validators.required]
     });
     this._idUtilisateur = this.idRecu;
   }
 
   onSubmit() {
-    const enteteUtilisateur = new Entete();
-    enteteUtilisateur._idUtilisateur = this.idRecu;
-    enteteUtilisateur.raisonSociale = this.editEnteteForm.get('raisonSociale').value;
-    enteteUtilisateur.adresse = this.editEnteteForm.get('adresse').value;
-    enteteUtilisateur.codePostal = this.editEnteteForm.get('codePostal').value;
-    enteteUtilisateur.ville = this.editEnteteForm.get('ville').value;
-    enteteUtilisateur.mail = this.editEnteteForm.get('mail').value;
-    enteteUtilisateur.tel = this.editEnteteForm.get('tel').value;
-    enteteUtilisateur.capitalSocial = this.editEnteteForm.get('capitalSocial').value;
-    enteteUtilisateur.siret = this.editEnteteForm.get('siret').value;
-    enteteUtilisateur.siren = this.editEnteteForm.get('siren').value;
-    enteteUtilisateur.tvaIntraCommunautaire = this.editEnteteForm.get('tvaIntraCommunautaire').value;
-    enteteUtilisateur.logo = '';
-
-    this.enteteService.createEntete(enteteUtilisateur, this.editEnteteForm.get('image').value).then(
-      () => {
-        this.editEnteteForm.reset();
-        this.router.navigate(['/espace-utilisateur', this.idRecu]);
-      },
-      (error) => {
-        console.log('error');
-      }
-    )
-    // const enteteUtilisateur = new Entete;
+    // const enteteUtilisateur = new Entete();
     // enteteUtilisateur._idUtilisateur = this.idRecu;
-    // enteteUtilisateur.raisonSociale = this.editEnteteForm.value.raisonSociale;
-    // enteteUtilisateur.adresse =this.editEnteteForm.value.adresse;
-    // enteteUtilisateur.codePostal =this.editEnteteForm.value.codePostal;
-    // enteteUtilisateur.ville =this.editEnteteForm.value.ville;
-    // enteteUtilisateur.mail =this.editEnteteForm.value.mail;
-    // enteteUtilisateur.tel =this.editEnteteForm.value.tel;
-    // enteteUtilisateur.capitalSocial =this.editEnteteForm.value.capitalSocial;
-    // enteteUtilisateur.siret =this.editEnteteForm.value.siret;
-    // enteteUtilisateur.siren =this.editEnteteForm.value.siren;
-    // enteteUtilisateur.tvaIntraCommunautaire =this.editEnteteForm.value.tvaIntraCommunautaire;
-    // enteteUtilisateur.logo =this.editEnteteForm.value.logo;
+    // enteteUtilisateur.raisonSociale = this.editEnteteForm.get('raisonSociale').value;
+    // enteteUtilisateur.adresse = this.editEnteteForm.get('adresse').value;
+    // enteteUtilisateur.codePostal = this.editEnteteForm.get('codePostal').value;
+    // enteteUtilisateur.ville = this.editEnteteForm.get('ville').value;
+    // enteteUtilisateur.mail = this.editEnteteForm.get('mail').value;
+    // enteteUtilisateur.tel = this.editEnteteForm.get('tel').value;
+    // enteteUtilisateur.capitalSocial = this.editEnteteForm.get('capitalSocial').value;
+    // enteteUtilisateur.siret = this.editEnteteForm.get('siret').value;
+    // enteteUtilisateur.siren = this.editEnteteForm.get('siren').value;
+    // enteteUtilisateur.tvaIntraCommunautaire = this.editEnteteForm.get('tvaIntraCommunautaire').value;
+    // // enteteUtilisateur.logo = '';
 
-    // this.enteteService.createEntete(enteteUtilisateur).subscribe(
-    //   data => this.handleSuccess(data,this.editEntete), error => this.handleError(error))
+    // this.enteteService.createEntete(enteteUtilisateur, this.editEnteteForm.get('image').value).then(
+    //   () => {
+    //     this.editEnteteForm.reset();
+    //     this.router.navigate(['/espace-utilisateur', this.idRecu]);
+    //   },
+    //   (error) => {
+    //     console.log('error');
+    //   }
+    // )
+
+
+     const enteteUtilisateur = new Entete;
+     enteteUtilisateur._idUtilisateur = this.idRecu;
+     enteteUtilisateur.raisonSociale = this.editEnteteForm.value.raisonSociale;
+     enteteUtilisateur.adresse =this.editEnteteForm.value.adresse;
+     enteteUtilisateur.codePostal =this.editEnteteForm.value.codePostal;
+     enteteUtilisateur.ville =this.editEnteteForm.value.ville;
+     enteteUtilisateur.mail =this.editEnteteForm.value.mail;
+     enteteUtilisateur.tel =this.editEnteteForm.value.tel;
+     enteteUtilisateur.capitalSocial =this.editEnteteForm.value.capitalSocial;
+     enteteUtilisateur.siret =this.editEnteteForm.value.siret;
+     enteteUtilisateur.siren =this.editEnteteForm.value.siren;
+     enteteUtilisateur.tvaIntraCommunautaire =this.editEnteteForm.value.tvaIntraCommunautaire;
+     enteteUtilisateur.logo =this.editEnteteForm.value.logo
+     this.enteteService.createEntete(enteteUtilisateur).subscribe(
+       data => this.handleSuccess(data,this.onSubmit), error => this.handleError(error))
   }
 
-  // handleSuccess(data, formDirective) {
-  //   this.enteteService.dispatchEnteteCreated(data._id);
-  //   console.log(data);
-  //   this.router.navigate(['/espace-utilisateur', this.idRecu]);
-  // }
+  handleSuccess(data, formDirective) {
+    this.enteteService.dispatchEnteteCreated(data._id);
+    console.log(data);
+    this.router.navigate(['/espace-utilisateur', this.idRecu]);
+  }
 
-  // handleError(error) {
+  handleError(error) {
 
-  // }
+  }
 
   onImagePick(event: Event) {
 
