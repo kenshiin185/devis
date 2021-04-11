@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Entete } from '../models/entete';
 
 @Injectable({
@@ -19,21 +19,18 @@ export class EnteteService {
     this.idRecu = this.route.snapshot.params.id;
     return this.httpClient.post<Entete>(this.baseUrl, post);
   }
-// createEntete(entete: Entete, image: File) {
-//   return new Promise((resolve, reject) => {
-//     const enteteData = new FormData();
-//     enteteData.append('entete', JSON.stringify(entete));
-//     enteteData.append('image', image);
-//     this.httpClient.post(`${this.baseUrl}`, enteteData).subscribe(
-//       (response)=> {
-//         resolve(response);
-//       },
-//       (error) => {
-//         reject(error);
-//       }
-//     );
-//   });
-// }
+
+
+
+getEntete(): Observable<Entete[]> {
+  this.idRecu= this.route.snapshot.params.id;
+  return this.httpClient.get<Entete[]>(`${this.baseUrl}`);
+}
+getSingleEntete(id:string): Observable<Entete> {
+  this.idRecu= this.route.snapshot.params.id;
+  console.log(`rrr: ${this.baseUrl}/${this.idRecu}` )
+  return this.httpClient.get<Entete>(`${this.baseUrl}/${id}`);
+}
   dispatchEnteteCreated(id:string) {
     return this.enteteCreated.next(id);
   }

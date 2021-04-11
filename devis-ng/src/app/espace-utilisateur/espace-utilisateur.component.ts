@@ -12,7 +12,7 @@ import { ArticleService } from '../services/article.service';
 })
 export class EspaceUtilisateurComponent implements OnInit {
   data:any;
-  token: string = "";
+  token:any;
   _id:string = "";
   
   idArticle:string;
@@ -32,6 +32,7 @@ export class EspaceUtilisateurComponent implements OnInit {
     this.idRecu = this.route.snapshot.params.id; // permet de récupérer l'id dans l'url
     this.token = this.route.snapshot.params.token;
     console.log('utilisateur',this.route.snapshot.params.id);
+    console.log('token espace ut : ', this.token);
     this.articleList$ = this.articleService.getArticle();// récupération des articles par la méthode du service dans la varriable articleListe$
     this.listeArticles();
   }

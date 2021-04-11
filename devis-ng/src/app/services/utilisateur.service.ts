@@ -19,7 +19,7 @@ export class UtilisateurService {
   baseUrl = 'http://localhost:3000/api/auth/signup';
   baseUrlAuth = 'http://localhost:3000/api/auth/login';
   baseUrlLogOut = 'http://localhost:3000/api/auth/logout';
-  baseUrlSingleUtilisateur = 'http://localhost:3000/api/auth/utilisateur';
+  baseUrlSingleUtilisateur = 'http://localhost:3000/api/utilisateur';
   baseUrlUtilisateurs = 'http://localhost:3000/api/auth/utilisateur'
   private utilisateurCreated = new Subject<string>();
   constructor(
@@ -38,7 +38,7 @@ export class UtilisateurService {
   }
   /****************************************************************** */
   login(mailUtilisateur: string, passwordUtilisateur: string) {
-    return new Promise((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
       this.httpClient.post(
         this.baseUrlAuth,
         { mailUtilisateur: mailUtilisateur, passwordUtilisateur: passwordUtilisateur })
@@ -68,8 +68,8 @@ export class UtilisateurService {
   getUtilisateur(): Observable<Utilisateur[]> {
     return this.httpClient.get<Utilisateur[]>(`${this.baseUrlUtilisateurs}`);
   }
-  getSingleUtilisateur(): Observable<Utilisateur> {
-    return this.httpClient.get<Utilisateur>(`${this.baseUrlSingleUtilisateur}`);
+  getSingleUtilisateur(id:string): Observable<Utilisateur> {
+    return this.httpClient.get<Utilisateur>(`${this.baseUrlSingleUtilisateur}/${id}`);
   }
 
   getIdUtilisateur(id: string): Observable<Utilisateur> { //this

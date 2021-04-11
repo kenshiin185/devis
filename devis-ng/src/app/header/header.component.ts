@@ -38,11 +38,11 @@ export class HeaderComponent implements OnInit {
         this.isAuth = utilisateurService;
       }
     );
-    this.utilisateurService.getIdUtilisateur(this.utilisateurCourant.id).subscribe((data) => {
-      this.user = data;
-      console.log('test', data);
-      console.log('id recu: ' + this.idRecu);
-    });
+    // this.utilisateurService.getIdUtilisateur(this.utilisateurCourant.id).subscribe((data) => {
+    //   this.user = data;
+    //   console.log('test', data);
+    //   console.log('id recu: ' + this.idRecu);
+    // });
    
   }
 

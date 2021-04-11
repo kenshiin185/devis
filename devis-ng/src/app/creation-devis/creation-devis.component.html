@@ -1,1 +1,89 @@
-<p>creation-devis works!</p>
+<div class="container">
+    <div class="left" style="margin-top: 30px;">
+        <div class="typeDoc" *ngIf="displayTypeDoc">
+            <h3 style="margin-bottom: 30px;">Type du document</h3>
+            <div class="wbtn" style="margin-bottom:50px">
+                <button class="btn" (click)="deviss()">Devis</button>
+                <button class="btn" (click)="factures()">Facture</button>
+            </div>
+        </div>
+        <div class="tvaApplication" *ngIf="displaySelectTva">
+            <h4 style="margin-bottom: 30px;">TVA a appliquer</h4>
+            <div class="wbtn">
+                <button class="btn" (click)="tva0()">0%</button>
+                <button class="btn" (click)="tva11()">11%</button>
+                <button class="btn" (click)="tva22()">22%</button>
+            </div>
+        </div>
+        <div class="selectArticles" *ngIf="displaySelectArticles">
+            <button class="btn"style="margin-top: 20px;" (click)="download()">Télécharger document</button>
+            <h4 style="margin-bottom: 30px;margin-top: 30px;">Ajouter un article à votre document</h4>
+           
+            <ul>
+                <li *ngFor="let article of listeArticlesUtilisateur;let i=index">{{article.libelle}}
+                    <i class="fas fa-plus-circle blue" (click)="addArticle(i)"></i>
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
+
+
+    <div id="doc" class="right">
+        <img src="../assets/log.png" alt=""style="width:80px; height:100px">
+        <div class="enteteUtilisateur" *ngFor="let element of listeEnteteUtilisateur">
+            <span style="font-size: 20px;font-weight: bold;">{{element.raisonSociale}}</span>
+            <span style="font-size: 20px;font-weight: bold;">{{element.adresse}}</span>
+            <span style="font-size: 20px;font-weight: bold;">{{element.codePostal}} {{element.ville}}</span>
+            <span style="font-size: 20px;font-weight: bold;"></span>
+            <span style="font-size: 20px;font-weight: bold;">Tel: {{element.tel}}</span>
+            <span style="font-size: 20px;font-weight: bold;">Numéro de SIRET: {{element.siret}}</span>
+        </div>
+
+        <div class="enteteClient" *ngFor="let element of listeEnteteClient">
+            <span style="font-size: 20px;font-weight: bold;">{{element.raisonSocialeClient}}</span>
+            <span style="font-size: 20px;font-weight: bold;">{{element.adresseClient}}</span>
+            <span style="font-size: 20px;font-weight: bold;">{{element.codePostalClient}} {{element.villeClient}}</span>
+        </div>
+
+        <div class="titreDocument">
+            <h1 *ngIf="facture">{{titreFacture}}</h1>
+            <h1 *ngIf="devis">{{titreDevis}}</h1>
+        </div>
+        <div class="array">
+            <div class="wdesignation">
+                <h4 style="font-size: 20px;font-weight: bold;margin-bottom: 25px;margin-top: 10px">Designation</h4>
+                <div class="libelle" *ngFor="let article of newArticleArray">
+                    {{article.libelle}}
+                </div>
+            </div>
+            <div class="quantite">
+                <h4 style="font-size: 20px;font-weight: bold;margin-bottom: 25px;margin-top: 10px">Qté</h4>
+                <div class="wquantite" style="text-align: right;" *ngFor="let article of newArticleArray">
+                    {{this.quantite}}
+                </div>
+            </div>
+            <div class="wprice">
+                <h4 style="font-size: 20px;font-weight: bold;margin-bottom: 25px;margin-top: 10px;">Prix</h4>
+                <div class="prix" style="text-align:right;" *ngFor="let article of newArticleArray">
+                    {{article.prix}}
+                </div>
+            </div>
+        </div>
+        <div class="operations">
+           
+
+            <div class="wprix"><h3 style="color: rgb(85, 83, 83);">Total HT: </h3><div class="prixf">{{somme}}€</div></div>
+            <div class="wprix"><h3 style="color: rgb(85, 83, 83);">TVA {{this.tvaAppliquer}} %: </h3><div class="prixf">{{this.sommeTva}}€</div></div>
+            <div class="wprix"><h3 style="color: rgb(85, 83, 83);">Total TTC: </h3><div class="prix">{{this.totalttc}}€</div></div>
+            <div class="wprix"style="background-color: rgb(85, 83, 83);color:aliceblue"><h3>NET A PAYER: </h3><div class="prixf">{{this.totalttc}}€</div></div>
+        </div>
+        <div class="tvaNonApplicable" *ngIf="this.zero">
+            <span>TVA non applicable, article 293 B du CGI</span>
+            <span>Facture payable à réception</span>
+            <span>Mode de paiement par chèque, espèces, virement</span>
+        </div>
+        <div class="thanks">Merci de votre confiance</div>
+    </div>
+</div>

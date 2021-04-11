@@ -33,10 +33,16 @@ connection.once('open', () => {
 app.get('/test', (req,res) => {
     res.status(200).json({ message: 'Connexion de test réussie :)'});
 });
+
+
+
+
+
 app.use(bodyParser.json());
 app.use('/api/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/article/', articleRoutes);
 app.use('/api/entete/', enteteRoutes);
+// app.use('/api/utilisateur/', utilisateurRoutes);
 app.use('/api/auth', utilisateurRoutes);
 app.use('/api/client', clientRoutes)
 module.exports = app;

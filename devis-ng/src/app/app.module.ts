@@ -47,7 +47,8 @@ import { ConfirmDelClientComponent } from './confirm-del-client/confirm-del-clie
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
   ],
   providers: [
     {

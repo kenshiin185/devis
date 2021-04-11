@@ -55,6 +55,14 @@ exports.login = (req, res, next) => {
                 .catch(error => res.status(500).json({ error }));
         })
         .catch(error => res.status(500).json({ error }));
+        
+};
+
+exports.getSingleUtilisateur = (req, res, next) => {
+    Utilisateur.findOne({ _id: req.params.id })
+        .then(utilisateur => res.status(200).json(utilisateur))
+        .catch(error => res.status(400).json({ error }));
+        next();
 };
 
 exports.logout = (req,res,next) => {
@@ -66,4 +74,5 @@ exports.logout = (req,res,next) => {
             { expiresIn: '24h' }
         )
     });
+
 };
